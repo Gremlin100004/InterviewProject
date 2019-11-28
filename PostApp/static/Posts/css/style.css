@@ -1,0 +1,290 @@
+.row{
+    margin: 0;
+}
+
+        /*top navigation*/
+#Post__nav{
+    margin: auto;
+    top: 44px;
+    padding: 10px 0;
+    text-align: center;
+    font-family: Calibri;
+    font-size: 15pt;
+    background: #2a3844;
+    border-bottom: 1px solid #4d6981;
+}
+
+.Post__header__show > a{
+    color: white;
+    display: block;
+}
+
+.Post__header__show:hover{
+    background: #26333e;
+}
+
+.Post__header__show > a:hover{
+    color: #457197;
+    text-decoration: none;
+}
+
+#Post__last__active {
+    border-bottom: 4px solid #457197;
+}
+#Post__last__active > a{
+    color: #457197;
+    display: block;
+}
+#Post__top__active {
+    border-bottom: 4px solid #457197;
+}
+#Post__top__active > a{
+    color: #457197;
+    display: block;
+}
+/*end top navigation*/
+
+    /*content*/
+#content{
+    color: white;
+    background: #2a3844;
+    margin-top: -27px;
+    margin-bottom: -100px;
+    width: 30px;!important;
+}
+
+.contents{
+    padding-top: 40px;
+}
+
+#container__add{
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border: 1px solid #4d6981;
+    border-radius: 4px;
+}
+
+.Post{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 4px;
+    border: 1px solid #4d6981;
+    border-radius: 4px;
+}
+.User__post{
+    display: inline;
+}
+.User__post a{
+    color: #9faebf;
+    font-family: Cambria;
+    font-size: 18pt;
+    margin-left: 25px;
+}
+.User__post a:hover{
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
+
+/*Button with menu*/
+ul.menu{
+    float: right;
+}
+.menu, .submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu:after, .submenu:after {
+    display: block;
+    content: ' ';
+    clear: both;
+    float: none;
+}
+ul.menu > li {
+
+}
+ul.menu > li > a {
+    display: block;
+    padding: 10px;
+    color: #b9baba;
+    font-size: 10pt;
+    font-family: Arial;
+    text-decoration: none;
+}
+ul.menu > li> a:hover {
+    color: #86a4ba;
+}
+
+ul.submenu {
+    display: none;
+    position: absolute;
+    width: 28%;
+    background-color: #2a3844;
+    border: 1px solid #4d6981;
+    border-radius: 4px;
+}
+
+ul.submenu > li > a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+ul.submenu > li > a:hover {
+    transition: 0.5s;
+    text-decoration: none;
+    background: #1e1e1e;
+}
+
+ul.menu > li:hover > ul.submenu {
+    display: block;
+}
+/*end button with menu*/
+
+
+.Posts__h3{
+    padding: 0 40px;
+    text-indent: 20px;
+    text-decoration: none;
+    text-align: justify;
+    font-size: 15pt;
+}
+.Posts__h3 a{
+    color: #c4d9e9;
+    font-size: 15pt;
+}
+
+.Posts__h3 a:hover{
+    color: #94a9b6;
+    text-decoration: none;
+}
+.Posts__h6{
+    padding: 0 40px 0 40px;
+    color: #a9a9a8;
+    font-size: 12pt;
+}
+
+.Post__img{
+    text-align: center;
+}
+
+.Post__img img{
+    max-height: 300px;
+    max-width: 800px;
+}
+.Post__like{
+    text-align: right;
+    padding-right: 100px;
+    padding-bottom: 40px;
+}
+.Post__like img{
+    /*padding-bottom: 40px;*/
+    height: 25px;
+    width: auto;
+}
+.data{
+    display: none;
+}
+
+.Post__text{
+    padding: 0 40px;
+    text-indent: 40px;
+    text-align: justify;
+}
+.Comments{
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border: 1px solid #4d6981;
+    border-radius: 4px;
+}
+
+
+.Posts__comments{
+    margin-top: 20px;
+    padding-left: 40px;
+
+}
+.User__comment{
+    color: #c4d9e9;
+    font-family: Cambria;
+    font-size: 15pt;
+    padding-left: 90px;
+}
+
+.Post__comment{
+    padding: 0 100px 0 100px;
+}
+.Comment__input{
+    margin: 0 40px 30px 40px;
+}
+
+.Post__url{
+    display: block;
+    width: 40%;
+    color: #8dbff0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.Post__url:hover{
+    color: #8dbff0;
+}
+
+.Post__title{
+    width: 95%;
+    height: auto;
+    background: #1f2a33;
+    color: white;
+    font-size: 18px;
+    border: 1px solid #4d6981;
+    border-radius: 4px;
+}
+
+.col-md-12{
+    padding-top: 30px;
+}
+
+#Post__submit{
+    padding-top: 30px;
+}
+
+.Post__add__buttons{
+    margin-left: 20px;
+    padding: 13px 30px;
+    font-size: 15px;
+    color: white;
+    background-color: #3bbd7b;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Post__add__buttons:hover{
+    transition: all 0.5s;
+    background-color: #157d48;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload label{
+    padding: 5px;
+    border-radius: 5px;
+    background: #2f3031;
+}
+.image-upload label:hover{
+    background: #1f2a33;
+}
+
+.image-upload img
+{
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+}
+
+#Post__input{
+    display: none;
+}

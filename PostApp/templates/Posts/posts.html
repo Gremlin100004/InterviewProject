@@ -1,0 +1,80 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block post %}
+    <link rel="stylesheet" href="{% static "Posts/css/style.css" %}" type="text/css">
+    <section class="Post__header">
+        <div class="container-fuild">
+            <div class="row justify-content-center">
+                <div class="col-md-5 fixed-top" id="Post__nav">
+                    <div class="row">
+                        {% if show_posts == 'top' %}
+                            <div class="col-md-3 Post__header__show">
+                                <a  href="/">LAST</a>
+                            </div>
+                            <div class="col-md-3 Post__header__show" id="Post__top__active">
+                                <a   href="/top/">TOP</a>
+                            </div>
+                        {% else %}
+                            <div class="col-md-3 Post__header__show" id="Post__last__active">
+                                <a  href="/">LAST</a>
+                            </div>
+                            <div class="col-md-3 Post__header__show">
+                                <a   href="/top/">TOP</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="Posts">
+        <div class="container-fuild">
+            <div class="row justify-content-center">
+                <div class="col-md-5 contents" id="content">
+                    {% for post in posts %}
+                        <div id="Post{{ post.id }}" class="Post">
+                            <h3 class="User__post"><a href="/user/posts/{{ post.id }}">{{ post.user }}</a></h3>
+                            {% if post.user == username %}
+                                <ul class="menu">
+                                    <li><a href=#>∨</a>
+                                        <ul class="submenu">
+                                            <li><a href=/edit/{{ post.id }}>Редактировать</a></li>
+                                            <li><a href="javascript:delete_post({{ post.id }});">Удалить запись</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                            <h6 class="Posts__h6">{{ post.post_date }}</h6>
+                            <h3 class="Posts__h3"><a href="/get/{{ post.id }}">{{ post.post_title }}</a></h3>
+                            {% if post.post_image %}
+                                <p class="Post__img"><img src="{% static post.post_image.url %}" alt="post"></p>
+                            {% endif %}
+                            <p class="Post__text">
+                                {{ post.post_text }}
+                                {% for post_data in posts_flgs %}
+                                    {% if post_data.id == post.id and post_data.flag_post_url == '1' %}
+                                        <a class="Post__url" href="{{ post.post_url }}" target="_blank">{{ post.post_url }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                            {% if username %}
+                                {% for flg in posts_likes_flgs %}
+                                    {% if flg.id == post.id %}
+                                        {% if flg.flag_like == '1' %}
+                                            <p id="Post__like{{ post.id }}" class="Post__like"><a href="javascript:change_like({{ post.id }});"><img src="{% static "Posts/ico/like1.png" %}" alt="post"></a>{{ post.number_likes }}</p>
+                                        {% else %}
+                                            <p id="Post__like{{ post.id }}" class="Post__like"><a href="javascript:change_like({{ post.id }});"><img src="{% static "Posts/ico/like.png" %}" alt="post"></a>{{ post.number_likes }}</p>
+                                        {% endif %}
+                                        <p id="flag_user{{ post.id }}" class="data">{{ flg.flag_like }}</p>
+                                        <p id="number_likes{{ post.id }}" class="data">{{ post.number_likes }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="{% static "Posts/js/posts.js" %}"></script>
+{% endblock %}

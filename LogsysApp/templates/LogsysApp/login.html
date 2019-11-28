@@ -1,0 +1,28 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block login %}
+    <script>
+        document.getElementById('nav-link').style.display = "none";
+    </script>
+    <link rel="stylesheet" href="{% static "LogsysApp/css/LoginStyle.css" %}" type="text/css">
+    <div class="container">
+        <form action="/auth/login/" method="post">{% csrf_token %}
+            <div class="Login-input">
+                <p>Авторизация</p>
+            </div>
+            <div class="Login-input">
+                <img src="{% static "LogsysApp/ico/user.ico" %}" alt="user">
+                <input type="text" name="username" placeholder="Введите логин">
+            </div>
+            <div class="Login-input">
+                <img src="{% static "LogsysApp/ico/password.ico" %}" alt="user">
+                <input type="password" name="password" placeholder="Введите пароль">
+            </div>
+            {% if login_error %}
+                <label class="error">{{ login_error }}</label>
+            {% endif %}
+            <input class="Login-submit" type="submit" name="submit" VALUE="Войти"><br/>
+            <input class="registr" type="button" name="button" onclick='location.href="/auth/register"' VALUE="Регистрация">
+        </form>
+    </div>
+{% endblock %}

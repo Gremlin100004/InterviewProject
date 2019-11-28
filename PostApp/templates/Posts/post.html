@@ -1,0 +1,82 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block post %}
+    <link rel="stylesheet" href="{% static "Posts/css/style.css" %}" type="text/css">
+    <section class="Posts">
+        <div class="container-fuild">
+            <div class="row justify-content-center">
+                <div class="col-md-5" id="content">
+                    <div class="Post">
+                        <h3 class="User__post"><a href="/user/posts/{{ post.id }}">{{ post.user }}</a></h3>
+                        {% if post.user == username %}
+                        <ul class="menu">
+                            <li><a href=#>∨</a>
+                                <ul class="submenu">
+                                    <li><a href=/edit/{{ post.id }}>Редактировать</a></li>
+                                    <li><a href=/delete/{{ post.id }}>Удалить запись</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        {% endif %}
+                        <h6 class="Posts__h6">{{ post.post_date }}</h6>
+                        <h3 class="Posts__h3">{{ post.post_title }}</h3>
+                        {% if post.post_image %}
+                            <p class="Post__img"><img src="{% static post.post_image.url %}" alt="post"></p>
+                        {% endif %}
+                        <p class="Post__text">
+                            {{ post.post_text }}
+                            {% if flag_url == '1' %}
+                                <a class="Post__url" href="{{ post.post_url }}" target="_blank">{{ post.post_url }}</a>
+                            {% endif %}
+                        </p>
+                        {% if username %}
+                            {% if like_flag == '1' %}
+                                <p id="Post__like{{ post.id }}" class="Post__like"><a href="javascript:change_like({{ post.id }});"><img src="{% static "Posts/ico/like1.png" %}" alt="post"></a>{{ post.number_likes }}</p>
+                            {% else %}
+                                <p id="Post__like{{ post.id }}" class="Post__like"><a href="javascript:change_like({{ post.id }});"><img src="{% static "Posts/ico/like.png" %}" alt="post"></a>{{ post.number_likes }}</p>
+                            {% endif %}
+                            <p id="flag_user{{ post.id }}" class="data">{{ like_flag }}</p>
+                            <p id="number_likes{{ post.id }}" class="data">{{ post.number_likes }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="Comments">
+                        <div id="Comments__show">
+                            <p class="Posts__comments">Коментарии:</p>
+                            {% if comments %}
+                                {% for comment in comments %}
+                                    <div id="Comment__post{{ comment.id }}">
+                                        {% for flg in posts_flgs %}
+                                            {% if flg.id == comment.id%}
+                                                <a href="/user/posts/{{ flg.id_user_coment }}" class="User__comment">{{ comment.user }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if comment.user == username %}
+                                            <ul class="menu">
+                                                <li><a  href="javascript:delete_comment({{ comment.id }});" title="Удалить">X</a></li>
+                                            </ul>
+                                        {% endif %}
+                                        <p class="Post__comment">{{ comment.comments_text }}</p>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div id="Comments__add">
+                            {% if username %}
+                                <form id="form_add_comment" action="/addcomment/{{ post.id }}">{% csrf_token %}
+                                    <div class="Comment__input">
+                                        <textarea class="Post__title" id="comments-text" placeholder="Комментарий" required></textarea>
+                                    </div>
+                                    <div class="Comment__input">
+                                        <input type="button" onclick="addcomment();" class="Post__add__buttons" value="Добавить комментарий">
+                                    </div>
+                                        <p id="username" class="invisible">{{ username }}</p>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="{% static "Posts/js/posts.js"%}"></script>
+{% endblock %}
