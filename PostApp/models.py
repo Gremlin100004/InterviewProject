@@ -3,9 +3,10 @@ from django.db import models
 
 class Posts(models.Model):
     class Meta():
-        db_table = 'posts'
+        verbose_name_plural = 'posts'
     
     user = models.CharField(max_length=200)
+    # user = models.ForeignKey('auth.User') - можно было реализовать
     post_title = models.CharField(max_length=200)
     post_text = models.TextField()
     post_date = models.DateTimeField()
@@ -18,14 +19,14 @@ class Posts(models.Model):
 
 class Likes_Post(models.Model):
     class Meta():
-        db_table = 'likes'
+        verbose_name_plural = 'likes'
 
     like_user = models.CharField(max_length=200)
     likes_post = models.ForeignKey('Posts', on_delete=models.CASCADE)
 
 class Comments(models.Model):
     class Meta():
-        db_table = 'comments'
+        verbose_name_plural = 'comments'
 
     comments_text = models.TextField()
     comments_article = models.ForeignKey('Posts', on_delete=models.CASCADE)

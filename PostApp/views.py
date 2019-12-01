@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Posts, Comments, Likes_Post
 from django.contrib import auth
 from django.contrib.auth.forms import User
-import datetime
+from django.utils import timezone
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render_to_response
 
@@ -177,7 +177,7 @@ def add_posts_user(request):
         post_title = request.POST.get('title', '')
         post_text = request.POST.get('text', '')
         post_url = request.POST.get('url', '')
-        post_date = datetime.datetime.now()
+        post_date = timezone.now()
         try:
             post_img = request.FILES['load__img']
         except:
