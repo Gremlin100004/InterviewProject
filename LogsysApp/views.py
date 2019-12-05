@@ -1,12 +1,7 @@
-import requests
 from django.shortcuts import render
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import redirect
 from django.contrib import auth
 from django.contrib.auth.forms import User
-from django.middleware import csrf
-
-from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm
 
 def login(request):
     context = {}
@@ -16,10 +11,10 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user != None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect("/")
         else:
             context['login_error'] = "Введен не правильный логин или пароль"
-            # return render_to_response('LoginApp/login.html', ctx)
+
     return render(request, 'LogsysApp/login.html', context)
 
 def logout(request):
@@ -47,9 +42,7 @@ def registration(request):
             ctx['login_error'] = "Логин уже существует"
         else:
             User.objects.create_user(username=username, password=password2)
-            # user = auth.authenticate(username=username, password=password2)
-            # auth.login(request, user)
             ctx['login_error'] = "Регистрация прошла успешно"
-            return render(request, 'LogsysApp/login.html', ctx)
-
-    return render(request, 'LogsysApp/registration.html', ctx)
+        return render(request, 'LogsysApp/registration.html', ctx)
+    else:
+        return redirect("/")

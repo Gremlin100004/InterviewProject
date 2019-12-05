@@ -5,21 +5,21 @@
     <section class="Post__header">
         <div class="container-fuild">
             <div class="row justify-content-center">
-                <div class="col-md-5 fixed-top" id="Post__nav">
+                <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5 fixed-top" id="Post__nav">
                     <div class="row">
                         {% if show_posts == 'top' %}
-                            <div class="col-md-3 Post__header__show">
+                            <div class="col-6 col-sm-5 col-md-3 Post__header__show">
                                 <a  href="/">LAST</a>
                             </div>
-                            <div class="col-md-3 Post__header__show" id="Post__top__active">
-                                <a   href="/top/">TOP</a>
+                            <div class="col-6 col-sm-5 col-md-3 Post__header__show" id="Post__top__active">
+                                <a   href="/user/top/">TOP</a>
                             </div>
                         {% else %}
-                            <div class="col-md-3 Post__header__show" id="Post__last__active">
+                            <div class="col-6 col-sm-5 col-md-3 Post__header__show" id="Post__last__active">
                                 <a  href="/">LAST</a>
                             </div>
-                            <div class="col-md-3 Post__header__show">
-                                <a   href="/top/">TOP</a>
+                            <div class="col-6 col-sm-5 col-md-3 Post__header__show">
+                                <a   href="/user/top/">TOP</a>
                             </div>
                         {% endif %}
                     </div>
@@ -30,22 +30,22 @@
     <section class="Posts">
         <div class="container-fuild">
             <div class="row justify-content-center">
-                <div class="col-md-5 contents" id="content">
+                <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5 contents" id="content">
                     {% for post in posts %}
                         <div id="Post{{ post.id }}" class="Post">
                             <h3 class="User__post"><a href="/user/posts/{{ post.id }}">{{ post.user }}</a></h3>
                             {% if post.user == username %}
                                 <ul class="menu">
-                                    <li><a href=#>∨</a>
+                                    <li><a>∨</a>
                                         <ul class="submenu">
-                                            <li><a href=/edit/{{ post.id }}>Редактировать</a></li>
+                                            <li><a href=/user/edit/{{ post.id }}>Редактировать</a></li>
                                             <li><a href="javascript:delete_post({{ post.id }});">Удалить запись</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             {% endif %}
                             <h6 class="Posts__h6">{{ post.post_date }}</h6>
-                            <h3 class="Posts__h3"><a href="/get/{{ post.id }}">{{ post.post_title }}</a></h3>
+                            <h3 class="Posts__h3"><a href="/user/get/{{ post.id }}">{{ post.post_title }}</a></h3>
                             {% if post.post_image %}
                                 <p class="Post__img"><img src="{% static post.post_image.url %}" alt="post"></p>
                             {% endif %}

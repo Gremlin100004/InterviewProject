@@ -42,7 +42,6 @@
     color: #457197;
     display: block;
 }
-/*end top navigation*/
 
     /*content*/
 #content{
@@ -78,7 +77,7 @@
     color: #9faebf;
     font-family: Cambria;
     font-size: 18pt;
-    margin-left: 25px;
+    margin-left: 4%;
 }
 .User__post a:hover{
     text-decoration: none;
@@ -104,6 +103,12 @@ ul.menu > li {
 
 }
 ul.menu > li > a {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
     display: block;
     padding: 10px;
     color: #b9baba;
@@ -116,12 +121,18 @@ ul.menu > li> a:hover {
 }
 
 ul.submenu {
+    margin-left: -100px;
     display: none;
     position: absolute;
-    width: 28%;
+    width: 130px;
     background-color: #2a3844;
     border: 1px solid #4d6981;
     border-radius: 4px;
+}
+@media (min-width: 576px) {
+    ul.submenu {
+        margin-left: 0;
+    }
 }
 
 ul.submenu > li > a {
@@ -143,7 +154,7 @@ ul.menu > li:hover > ul.submenu {
 
 
 .Posts__h3{
-    padding: 0 40px;
+    padding: 0 5%;
     text-indent: 20px;
     text-decoration: none;
     text-align: justify;
@@ -159,7 +170,7 @@ ul.menu > li:hover > ul.submenu {
     text-decoration: none;
 }
 .Posts__h6{
-    padding: 0 40px 0 40px;
+    padding: 0 5%;
     color: #a9a9a8;
     font-size: 12pt;
 }
@@ -179,7 +190,6 @@ ul.menu > li:hover > ul.submenu {
     padding-bottom: 40px;
 }
 .Post__like img{
-    /*padding-bottom: 40px;*/
     height: 25px;
     width: auto;
 }
@@ -188,8 +198,8 @@ ul.menu > li:hover > ul.submenu {
 }
 
 .Post__text{
-    padding: 0 40px;
-    text-indent: 40px;
+    padding: 0 5%;
+    text-indent: 5%;
     text-align: justify;
 }
 .Comments{

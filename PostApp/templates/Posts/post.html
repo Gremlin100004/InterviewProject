@@ -5,15 +5,15 @@
     <section class="Posts">
         <div class="container-fuild">
             <div class="row justify-content-center">
-                <div class="col-md-5" id="content">
+                <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5" id="content">
                     <div class="Post">
                         <h3 class="User__post"><a href="/user/posts/{{ post.id }}">{{ post.user }}</a></h3>
                         {% if post.user == username %}
                         <ul class="menu">
-                            <li><a href=#>∨</a>
+                            <li><a>∨</a>
                                 <ul class="submenu">
-                                    <li><a href=/edit/{{ post.id }}>Редактировать</a></li>
-                                    <li><a href=/delete/{{ post.id }}>Удалить запись</a></li>
+                                    <li><a href=/user/edit/{{ post.id }}>Редактировать</a></li>
+                                    <li><a href=/user/delete/{{ post.id }}>Удалить запись</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -62,7 +62,7 @@
                         </div>
                         <div id="Comments__add">
                             {% if username %}
-                                <form id="form_add_comment" action="/addcomment/{{ post.id }}">{% csrf_token %}
+                                <form id="form_add_comment" action="/user/addcomment/{{ post.id }}">{% csrf_token %}
                                     <div class="Comment__input">
                                         <textarea class="Post__title" id="comments-text" placeholder="Комментарий" required></textarea>
                                     </div>

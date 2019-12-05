@@ -14,10 +14,12 @@ body {
 .navbar {
     padding: 2px 80px;
     background-color: black !important;
+    z-index: 999999;
 }
 .navbar-brand {
     font-family: "Corbel";
-    font-size: 20px;
+    font-size: 6vw;
+
     color: white !important;
     transition: 0.3s;
 }
@@ -32,22 +34,20 @@ body {
 
         /*left-menu*/
 .navbar-nav {
-    margin-top: 44px !important;
-    height: 1000px !important;
-    background: #2a3844!important;
-    padding-top: 80px;
+    text-align: right;
     font-family: Calibri;
-    font-size: 17pt;
+    font-size: 6vw;
     color: white;
     list-style: none;
 }
 .nav-item {
-    margin: 0 30px;
+    margin: 0 0 0 60%;
+
 }
 
 .nav-link{
     color: white !important;
-    padding-left: 30px !important;
+    padding-right: 20%!important;
 }
 
 .nav-link:hover {
@@ -57,20 +57,40 @@ body {
     border-radius: 100px;
 }
 
+@media (min-width: 433px) {
+    .nav-item {
+        margin: 0 0 0 75%;
+    }
+    .navbar-nav{
+        font-size: 17pt;
+    }
+    .navbar-brand{
+        font-size: 17pt;
+    }
+}
+
 @media (min-width: 992px) {
     .sidenav {
+        padding-top: 80px;
+        text-align: left;
         position: absolute;
         top: 0;
         left: 0;
         width: 230px;
-        height: calc(100vh - 3.5rem);
-        margin-top: 3.5rem;
-        background: #343a40;
+        height: calc(100vh - 3.0rem);
+        margin-top: 3.0rem;
+        background: #2a3844;
         box-sizing: border-box;
         border-top: 1px solid rgba(0, 0, 0, 0.3);
     }
     .navbar-expand-lg .sidenav {
         flex-direction: column;
+    }
+    .nav-item {
+    margin: 0 30px;
+    }
+    .nav-link{
+       padding-left: 30px !important;
     }
 }
            /*end left_menu*/

@@ -186,7 +186,6 @@ def add_posts_user(request):
                             post_date=post_date, post_image=post_img)
         model_posts.save()
         ctx = {}
-        username = auth.get_user(request).username
         posts = Posts.objects.all().order_by('-post_date')
         ctx['posts'] = posts
         ctx['username'] = username
@@ -201,6 +200,24 @@ def edit_post(request, post_id):
     ctx['post_id'] = post_id
     return render(request, 'Posts/Edit_post.html', ctx)
 
+def savechange(request):
+    if request.POST:
+        ctx = {}
+        post_id = int(request.POST.get('post_id', ''))
+        Post_user = Posts.objects.get(id=post_id)
+        Post_user.post_title = request.POST.get('title', '')
+        Post_user.post_text = request.POST.get('text', '')
+        img_path = request.FILES['load__img'] if 'load__img' in request.FILES else False
+        if img_path != False:
+            Post_user.post_image = request.FILES['load__img']
+        Post_user.post_url = request.POST.get('url', '')
+        Post_user.save()
+        posts = Posts.objects.get(id=post_id)
+        coment = Comments.objects.filter(comments_article_id=post_id)
+        ctx['post'] = posts
+        ctx['comments'] = coment
+        ctx['username'] = auth.get_user(request).username
+        return render(request, 'Posts/post.html', ctx)
 
 def delete_post(request, post_id):
     Posts.objects.filter(id=post_id).delete()
@@ -226,26 +243,6 @@ def delete_post(request, post_id):
     ctx['username'] = username
     ctx['posts_flgs'] = flg_list
     return render(request, 'Posts/UserPosts.html', ctx)
-
-def savechange(request):
-    if request.POST:
-        ctx = {}
-        post_id = int(request.POST.get('post_id', ''))
-        Post_user = Posts.objects.get(id=post_id)
-        Post_user.post_title = request.POST.get('title', '')
-        Post_user.post_text = request.POST.get('text', '')
-        img_path = request.FILES['load__img'] if 'load__img' in request.FILES else False
-        if img_path != False:
-            Post_user.post_image = request.FILES['load__img']
-        Post_user.post_url = request.POST.get('url', '')
-        Post_user.save()
-        posts = Posts.objects.get(id=post_id)
-        coment = Comments.objects.filter(comments_article_id=post_id)
-        ctx['post'] = posts
-        ctx['comments'] = coment
-        ctx['username'] = auth.get_user(request).username
-        return render(request, 'Posts/post.html', ctx)
-
 
 def addlike(request, post_id):
     flg_user = False
@@ -277,4 +274,4 @@ def addcomment(request, post_id):
 
 def delete_comment(request, post_id):
     Comments.objects.filter(id=post_id).delete()
-    redirect('/get/%s' % post_id)
+    return redirect('/get/%s' % post_id)

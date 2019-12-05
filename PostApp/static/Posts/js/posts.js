@@ -40,7 +40,7 @@ function addcomment() {
 }
 
 function delete_post(id) {
-    let url = '/delete/' +id;
+    let url = '/user/delete/' +id;
 
     $.ajax({
         url: url,
@@ -51,7 +51,7 @@ function delete_post(id) {
 }
 
 function delete_comment(id) {
-    let url = '/deleteComment/' +id;
+    let url = '/user/deleteComment/' +id;
 
     $.ajax({
         url: url,
@@ -66,7 +66,7 @@ function change_like(id) {
     let flag_post = document.getElementById("flag_user" + id);
     let a_like = document.createElement("A");
     let Post__like = document.getElementById("Post__like" + id);
-    let url = '/addlike/' +id;
+    let url = '/user/addlike/' +id;
 
     a_like.href = "javascript:change_like(" + id + ");";
     let img = document.createElement("IMG");
