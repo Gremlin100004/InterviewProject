@@ -21,7 +21,8 @@ Technology was used to create the website:
 3. Standard markup language HTML.
 4. Style sheet language CSS.
 5. Technology AJAX.
-6. DATABASE SQLite (for demonstartion) and MySQL.
+6. Technology BOOTSTRAP.
+7. DATABASE SQLite (for demonstartion) and MySQL.
 ```
 Test
 ```no-highlight
