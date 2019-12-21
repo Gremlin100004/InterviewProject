@@ -1,5 +1,7 @@
 # InterviewProject
+https://interviewproject.pythonanywhere.com
 ##### Example my work (simple things)
+
 
 The following functionality is implemented in this project:
 ```no-highlight
@@ -13,7 +15,14 @@ The following functionality is implemented in this project:
 8. Add , edit and remove a post.
 9. Add or remove a comment.
 10. Add or remove a like.
+11. Add or remove a like.
+12. API Rest for POSTS
 ```
+Example Rest API request:
+```
+/api/posts/?format=json
+```
+
 Technology was used to create the website:
 ```no-highlight
 1. Framework Django.
@@ -23,6 +32,7 @@ Technology was used to create the website:
 5. Technology AJAX.
 6. Technology BOOTSTRAP.
 7. DATABASE SQLite (for demonstartion) and MySQL.
+8. Django REST Framework (API Rest)
 ```
 Test
 ```no-highlight
