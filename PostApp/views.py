@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Posts, Comments, Likes_Post
 from django.contrib import auth
-from django.contrib.auth.forms import User
 from django.utils import timezone
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render_to_response
+from rest_framework import viewsets
+from .serializers import PostsSerializer
 
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostsSerializer
+    queryset = Posts.objects.all()
 
 def show_posts(request):
     ctx = {}
