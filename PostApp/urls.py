@@ -1,6 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from PostApp import views
-from django.conf import settings
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'api/posts', views.PostViewSet, basename='user')
 
 urlpatterns = [
     path('', views.show_posts),
@@ -15,4 +18,5 @@ urlpatterns = [
     path('posts/<int:post_id>', views.show_posts_user, name='user posts'),
     path('posts_autot/', views.show_posts_user_autoriz, name='user posts'),
     path('addpost/', views.add_posts_user, name='user posts'),
+    path('', include(router.urls)),
 ]
